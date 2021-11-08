@@ -513,13 +513,6 @@ void robotMotorMove(struct Robot * robot) {
         case RIGHT :
             robot->angle = (robot->angle+DEFAULT_ANGLE_CHANGE)%360;
             break;
-        case UTURN :
-            while (j < 12)
-            {
-            robot->angle = (robot->angle+360-DEFAULT_ANGLE_CHANGE)%360;
-            j++;
-            }
-            break;
     }
     robot->direction = 0;
     x_offset = (-robot->currentSpeed * sin(-robot->angle*PI/180));
@@ -585,18 +578,9 @@ if (robot-> done == 1){
     else if ((robot->currentSpeed==0) &&((side_right_sensor >= 2) && (side_left_sensor >= 2) && (front_left_sensor >= 2) && (front_right_sensor >=2)) ) {
         robot->direction = RIGHT;
     }
-    /*else if ((robot->currentSpeed==0) && ((front_left_sensor >= 1) && (side_right_sensor >=1) && (side_left_sensor >=2)) ) {
-        robot->direction = RIGHT;
-    }*/
     else if ((robot->currentSpeed==0) && ((side_left_sensor >= 2) && (front_left_sensor >= 2) && (side_right_sensor < 2)) ) {
         robot->direction = RIGHT;
     }
-    /*else if ((robot->currentSpeed<=2) && ((front_left_sensor == 1) || (front_right_sensor == 1)) ) {
-        robot->direction = LEFT;
-    }
-    else if ((robot->currentSpeed<=2) && ((front_left_sensor == 1) || (front_right_sensor == 0)) ) {
-        robot->direction = RIGHT;
-    }*/
     else if ((robot->currentSpeed<=2) && ((front_left_sensor == 0) || (front_right_sensor == 1)) ) {
         robot->direction = LEFT;
     }
