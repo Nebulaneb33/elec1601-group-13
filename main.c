@@ -11,6 +11,15 @@
 
 
 int done = 0;
+int colours[7][3] = {148, 0, 211, 75, 0, 130, 0, 0, 255, 0, 255, 0, 255, 255, 0, 255, 127, 0, 255, 0, 0};
+int colour_counter = 0;
+int counter = 0;
+int r = 148;
+int g = 0;
+int b = 211;
+int backr = 0;
+int backg = 0;
+int backb = 50;
 int main(int argc, char *argv[]) {
     SDL_Window *window;
     SDL_Renderer *renderer;
@@ -105,7 +114,7 @@ insertAndSetFirstWall(&head, 22, OVERALL_WINDOW_WIDTH/2+100, OVERALL_WINDOW_HEIG
 insertAndSetFirstWall(&head, 23, OVERALL_WINDOW_WIDTH-60, 150, 10, 10);
 */
 //Maze 1/2
-
+/*
  insertAndSetFirstWall(&head, 2,  220, 400, 10, 80);
  insertAndSetFirstWall(&head, 2,  20, 400, 200, 10);
  insertAndSetFirstWall(&head, 2,  20, 50, 10, 350);
@@ -128,9 +137,10 @@ insertAndSetFirstWall(&head, 23, OVERALL_WINDOW_WIDTH-60, 150, 10, 10);
  insertAndSetFirstWall(&head, 2,  500, 150, 20, 10);
  insertAndSetFirstWall(&head, 2,  520, 150, 10, 290);
  insertAndSetFirstWall(&head, 2,  520, 440, 120, 10);
-
+*/
+/*
 //Maze 3/4
-/*insertAndSetFirstWall(&head, 2,  640-10-220, 400, 10, 80);
+insertAndSetFirstWall(&head, 2,  640-10-220, 400, 10, 80);
 insertAndSetFirstWall(&head, 2,  640-200-20, 400, 200, 10);
 insertAndSetFirstWall(&head, 2,  640-10-20, 50, 10, 350);
 insertAndSetFirstWall(&head, 2,  640-280-20, 50, 280, 10);
@@ -155,7 +165,7 @@ insertAndSetFirstWall(&head, 2,  640-120-520, 440, 120, 10);*/
 
 
 // Maze 5/6
-/*
+
 int i;
 insertAndSetFirstWall(&head, 12,  120, 450, 10, 30);
 insertAndSetFirstWall(&head, 12,  220, 450, 10, 30);
@@ -213,7 +223,7 @@ for (i = 0; i < 100; i++){
  insertAndSetFirstWall(&head, 2,  530, 100, 70, 10);
  insertAndSetFirstWall(&head, 2,  530, 80, 10, 20);
  insertAndSetFirstWall(&head, 2,  530, 80, 110, 10);
-*/
+
 /*
 //MAZE 7/ Maze 8
  int i;
@@ -281,11 +291,26 @@ for (i = 0; i < 100; i++){
  insertAndSetFirstWall(&head, 2,  640-110-530, 80, 110, 10);
 */
 setup_robot(&robot);
-updateAllWalls(head, renderer);
+updateAllWalls(head, renderer, r, g, b);
 
     SDL_Event event;
     while(!done){
-        SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+        if (counter < 8) {
+            counter++;
+        }
+        else if (counter == 8) {
+            counter = 0;
+            colour_counter++;
+            if (colour_counter == 7) {
+                colour_counter = 0;
+            }
+        }
+
+        r = colours[colour_counter][0];
+        g = colours[colour_counter][1];
+        b = colours[colour_counter][2];
+
+        SDL_SetRenderDrawColor(renderer, backr, backg, backb, 255);
         SDL_RenderClear(renderer);
 
         //Move robot based on user input commands/auto commands
@@ -293,14 +318,15 @@ updateAllWalls(head, renderer);
             robotAutoMotorMove(&robot, front_left_sensor, front_right_sensor, side_left_sensor, side_right_sensor);
         robotMotorMove(&robot);
 
+
         //Check if robot reaches endpoint. and check sensor values
         //if (checkRobotReachedEnd(&robot, 0, 0, 10, 1000)){ //horrible maze
         //if (checkRobotReachedEnd(&robot, OVERALL_WINDOW_WIDTH/2+10, OVERALL_WINDOW_HEIGHT, 10, 200)){ //Our Maze
-         if (checkRobotReachedEnd(&robot, 640, 340, 10, 100)){ //Maze 1
+        //if (checkRobotReachedEnd(&robot, 640, 340, 10, 100)){ //Maze 1
         // if (checkRobotReachedEnd(&robot, 220, 480, 100, 10)){ //Maze 2
         // if (checkRobotReachedEnd(&robot, 0, 340, 10, 100)){ // Maze 3
         //if (checkRobotReachedEnd(&robot, 640-10-320, 480, 100, 10)){ //Maze 4
-        // if (checkRobotReachedEnd(&robot, 640, 20, 10, 60)){ //Maze 5
+         if (checkRobotReachedEnd(&robot, 640, 20, 10, 60)){ //Maze 5
         // if (checkRobotReachedEnd(&robot, 120, 480, 100, 10)){ //Maze 6
         // if (checkRobotReachedEnd(&robot, 0, 20, 10, 60)){ //Maze 7
         // if (checkRobotReachedEnd(&robot, 640-10-220, 480, 100, 10)){ //Maze 8
@@ -309,6 +335,14 @@ updateAllWalls(head, renderer);
             gettimeofday(&end_time, 0);
             msec = ((end_time.tv_sec - start_time.tv_sec)*1000)+(end_time.tv_usec - start_time.tv_usec)/1000;
             robotSuccess(&robot, msec);
+            backr = 218;
+            backg = 165;
+            backb = 32;
+            colour_counter = 9;
+            counter = 9;
+            r = 255;
+            g = 255;
+            b = 255;
         }
 
         //Otherwise compute sensor information
@@ -330,7 +364,7 @@ updateAllWalls(head, renderer);
                 printf("Getting close on the right side. Score = %d\n", side_right_sensor);
         }
         robotUpdate(renderer, &robot);
-        updateAllWalls(head, renderer);
+        updateAllWalls(head, renderer, r, g, b);
 
         // Check for user input
         SDL_RenderPresent(renderer);

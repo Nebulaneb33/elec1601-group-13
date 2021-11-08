@@ -7,9 +7,9 @@ void wallSetPosition(struct Wall * wall, int x, int y, int width, int height) {
     wall->height = height;
 }
 
-void wallUpdate(SDL_Renderer * renderer, struct Wall * wall){
+void wallUpdate(SDL_Renderer * renderer, struct Wall * wall, int r, int g, int b){
     SDL_Rect rect = {wall->x, wall->y, wall->width, wall->height};
-    SDL_SetRenderDrawColor(renderer, 207, 99, 85, 255);
+    SDL_SetRenderDrawColor(renderer, r, g, b, 255);
     SDL_RenderFillRect(renderer, &rect);
     SDL_RenderDrawRect(renderer, &rect);
 }
@@ -37,13 +37,13 @@ void insertAndSetFirstWall(struct Wall_collection ** head, int key, int x, int y
 
 }
 
-void updateAllWalls(struct Wall_collection * head, SDL_Renderer * renderer) {
+void updateAllWalls(struct Wall_collection * head, SDL_Renderer * renderer, int r, int g, int b) {
    struct Wall_collection *ptr = head;
 
    //start from the beginning
    while(ptr != NULL) {
       //printf("(%d)",ptr->key);
-      wallUpdate(renderer, &ptr->wall);
+      wallUpdate(renderer, &ptr->wall, r, g, b);
       ptr = ptr->next;
    }
 
