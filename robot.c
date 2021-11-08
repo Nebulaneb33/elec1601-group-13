@@ -1,5 +1,24 @@
 #include "robot.h"
 
+//Default Maze
+/*
+ void setup_robot(struct Robot *robot){
+     robot->x = OVERALL_WINDOW_WIDTH/2-50;
+     robot->y = OVERALL_WINDOW_HEIGHT-50;
+     robot->true_x = OVERALL_WINDOW_WIDTH/2-50;
+     robot->true_y = OVERALL_WINDOW_HEIGHT-50;
+     robot->width = ROBOT_WIDTH;
+     robot->height = ROBOT_HEIGHT;
+     robot->direction = 0;
+     robot->angle = 0;
+     robot->currentSpeed = 0;
+     robot->crashed = 0;
+     robot->auto_mode = 0;
+     robot->counter = 0;
+     robot->done = 1;
+     robot->still_counter = 0;
+*/
+
 //horrible maze by evil peers
 /*
 void setup_robot(struct Robot *robot){
@@ -41,7 +60,7 @@ void setup_robot(struct Robot *robot){
 
 
 //Maze 1
-
+/*
  void setup_robot(struct Robot *robot){
      robot->x = 270;
      robot->y = 460;
@@ -57,7 +76,7 @@ void setup_robot(struct Robot *robot){
      robot->counter = 0;
      robot->done = 1;
      robot->still_counter = 0;
-
+*/
 //Maze 2
 /*
  void setup_robot(struct Robot *robot){
@@ -111,8 +130,9 @@ void setup_robot(struct Robot *robot){
     robot->done = 1;
     robot->still_counter = 0;
 */
-/*
+
 // Maze 5
+/*
  void setup_robot(struct Robot *robot){
      robot->x = 170;
      robot->y = 460;
@@ -148,7 +168,7 @@ void setup_robot(struct Robot *robot){
    robot->done = 1;
    robot->still_counter = 0;
 */
-/*
+
 // Maze 7
  void setup_robot(struct Robot *robot){
      robot->x = 640-10-170;
@@ -165,7 +185,7 @@ void setup_robot(struct Robot *robot){
      robot->counter = 0;
      robot->done = 1;
      robot->still_counter = 0;
-*/
+
 /*
 //Maze 8
  void setup_robot(struct Robot *robot){
