@@ -45,6 +45,22 @@ int main(int argc, char *argv[]) {
 // Relative positions are used (OVERALL_WINDOW_WIDTH and OVERALL_WINDOW_HEIGHT)
 // But you can use absolute positions. 10 is used as the width, but you can change this.
 
+//Default Maze
+/*
+ insertAndSetFirstWall(&head, 1,  OVERALL_WINDOW_WIDTH/2, OVERALL_WINDOW_HEIGHT/2, 10, OVERALL_WINDOW_HEIGHT/2);
+ insertAndSetFirstWall(&head, 2,  OVERALL_WINDOW_WIDTH/2-100, OVERALL_WINDOW_HEIGHT/2+100, 10, OVERALL_WINDOW_HEIGHT/2-100);
+ insertAndSetFirstWall(&head, 3,  OVERALL_WINDOW_WIDTH/2-250, OVERALL_WINDOW_HEIGHT/2+100, 150, 10);
+ insertAndSetFirstWall(&head, 4,  OVERALL_WINDOW_WIDTH/2-150, OVERALL_WINDOW_HEIGHT/2, 150, 10);
+ insertAndSetFirstWall(&head, 5,  OVERALL_WINDOW_WIDTH/2-250, OVERALL_WINDOW_HEIGHT/2-200, 10, 300);
+ insertAndSetFirstWall(&head, 6,  OVERALL_WINDOW_WIDTH/2-150, OVERALL_WINDOW_HEIGHT/2-100, 10, 100);
+ insertAndSetFirstWall(&head, 7,  OVERALL_WINDOW_WIDTH/2-250, OVERALL_WINDOW_HEIGHT/2-200, 450, 10);
+ insertAndSetFirstWall(&head, 8,  OVERALL_WINDOW_WIDTH/2-150, OVERALL_WINDOW_HEIGHT/2-100, 250, 10);
+ insertAndSetFirstWall(&head, 9,  OVERALL_WINDOW_WIDTH/2+200, OVERALL_WINDOW_HEIGHT/2-200, 10, 300);
+ insertAndSetFirstWall(&head, 10,  OVERALL_WINDOW_WIDTH/2+100, OVERALL_WINDOW_HEIGHT/2-100, 10, 300);
+ insertAndSetFirstWall(&head, 11,  OVERALL_WINDOW_WIDTH/2+100, OVERALL_WINDOW_HEIGHT/2+200, OVERALL_WINDOW_WIDTH/2-100, 10);
+ insertAndSetFirstWall(&head, 12,  OVERALL_WINDOW_WIDTH/2+200, OVERALL_WINDOW_HEIGHT/2+100, OVERALL_WINDOW_WIDTH/2-100, 10);
+*/
+
 //horrible maze by evil peers
 //main.c
 /*
@@ -138,8 +154,9 @@ insertAndSetFirstWall(&head, 23, OVERALL_WINDOW_WIDTH-60, 150, 10, 10);
  insertAndSetFirstWall(&head, 2,  520, 150, 10, 290);
  insertAndSetFirstWall(&head, 2,  520, 440, 120, 10);
 */
-/*
+
 //Maze 3/4
+/*
 insertAndSetFirstWall(&head, 2,  640-10-220, 400, 10, 80);
 insertAndSetFirstWall(&head, 2,  640-200-20, 400, 200, 10);
 insertAndSetFirstWall(&head, 2,  640-10-20, 50, 10, 350);
@@ -161,11 +178,11 @@ insertAndSetFirstWall(&head, 2,  640-310-200, 250, 310, 10);
 insertAndSetFirstWall(&head, 2,  640-10-500, 150, 10, 100);
 insertAndSetFirstWall(&head, 2,  640-20-500, 150, 20, 10);
 insertAndSetFirstWall(&head, 2,  640-10-520, 150, 10, 290);
-insertAndSetFirstWall(&head, 2,  640-120-520, 440, 120, 10);*/
-
+insertAndSetFirstWall(&head, 2,  640-120-520, 440, 120, 10);
+*/
 
 // Maze 5/6
-
+/*
 int i;
 insertAndSetFirstWall(&head, 12,  120, 450, 10, 30);
 insertAndSetFirstWall(&head, 12,  220, 450, 10, 30);
@@ -223,8 +240,8 @@ for (i = 0; i < 100; i++){
  insertAndSetFirstWall(&head, 2,  530, 100, 70, 10);
  insertAndSetFirstWall(&head, 2,  530, 80, 10, 20);
  insertAndSetFirstWall(&head, 2,  530, 80, 110, 10);
+*/
 
-/*
 //MAZE 7/ Maze 8
  int i;
  insertAndSetFirstWall(&head, 12,  640-10-120, 450, 10, 30);
@@ -289,7 +306,7 @@ for (i = 0; i < 100; i++){
  insertAndSetFirstWall(&head, 2,  640-70-530, 100, 70, 10);
  insertAndSetFirstWall(&head, 2,  640-10-530, 80, 10, 20);
  insertAndSetFirstWall(&head, 2,  640-110-530, 80, 110, 10);
-*/
+
 setup_robot(&robot);
 updateAllWalls(head, renderer, r, g, b);
 
@@ -320,15 +337,16 @@ updateAllWalls(head, renderer, r, g, b);
 
 
         //Check if robot reaches endpoint. and check sensor values
+        //if (checkRobotReachedEnd(&robot, OVERALL_WINDOW_WIDTH, OVERALL_WINDOW_HEIGHT/2+100, 10, 100)){ //Default Maze
         //if (checkRobotReachedEnd(&robot, 0, 0, 10, 1000)){ //horrible maze
         //if (checkRobotReachedEnd(&robot, OVERALL_WINDOW_WIDTH/2+10, OVERALL_WINDOW_HEIGHT, 10, 200)){ //Our Maze
         //if (checkRobotReachedEnd(&robot, 640, 340, 10, 100)){ //Maze 1
         // if (checkRobotReachedEnd(&robot, 220, 480, 100, 10)){ //Maze 2
         // if (checkRobotReachedEnd(&robot, 0, 340, 10, 100)){ // Maze 3
         //if (checkRobotReachedEnd(&robot, 640-10-320, 480, 100, 10)){ //Maze 4
-         if (checkRobotReachedEnd(&robot, 640, 20, 10, 60)){ //Maze 5
+         //if (checkRobotReachedEnd(&robot, 640, 20, 10, 60)){ //Maze 5
         // if (checkRobotReachedEnd(&robot, 120, 480, 100, 10)){ //Maze 6
-        // if (checkRobotReachedEnd(&robot, 0, 20, 10, 60)){ //Maze 7
+         if (checkRobotReachedEnd(&robot, 0, 20, 10, 60)){ //Maze 7
         // if (checkRobotReachedEnd(&robot, 640-10-220, 480, 100, 10)){ //Maze 8
 
 
